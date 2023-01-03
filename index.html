@@ -12,10 +12,76 @@
         canvas {
             display: block;
         }
+        
+        @font-face {
+            font-family: Hubot;
+            src: url(font.ttf);
+            font-weight: bold;
+        }
+        
+        #rotate {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            white-space: nowrap;
+            font-family: Hubot;
+            position: fixed;
+            width: 100%;
+            height: 40px;
+            background-color: white;
+            z-index: 100;
+            bottom: 0;
+        }
+        
+        #scroll-text {
+            /* animation properties */
+            -moz-transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            -moz-animation: my-animation 30s linear infinite;
+            -webkit-animation: my-animation 30s linear infinite;
+            animation: my-animation 30s linear infinite;
+        }
+        /* for Firefox */
+        
+        @-moz-keyframes my-animation {
+            from {
+                -moz-transform: translateX(100%);
+            }
+            to {
+                -moz-transform: translateX(-100%);
+            }
+        }
+        /* for Chrome */
+        
+        @-webkit-keyframes my-animation {
+            from {
+                -webkit-transform: translateX(100%);
+            }
+            to {
+                -webkit-transform: translateX(-100%);
+            }
+        }
+        
+        @keyframes my-animation {
+            from {
+                -moz-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+            }
+            to {
+                -moz-transform: translateX(-100%);
+                -webkit-transform: translateX(-100%);
+                transform: translateX(-100%);
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div id="rotate">
+        <div id="scroll-text"></div>
+    </div>
     <script src="./main.js"></script>
 </body>
 

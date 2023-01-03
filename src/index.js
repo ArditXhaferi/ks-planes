@@ -210,6 +210,7 @@ function initGlobe() {
 
         allFlights.forEach(flight => {
             order += 4;
+            console.log(flight)
             flights.push({
                 "text": latLongData[flight.dep_iata][2] + "\n" + latLongData[flight.arr_iata][2],
                 "type": "flight",
@@ -223,7 +224,8 @@ function initGlobe() {
                 "startLng": latLongData[flight.dep_iata][1],
                 "endLat": latLongData[flight.arr_iata][0],
                 "endLng": latLongData[flight.arr_iata][1],
-                "arcAlt": arcAlt
+                "arcAlt": arcAlt,
+                "id": flight.flight_number
             })
             arcAlt += 0.03;
         })
@@ -259,6 +261,13 @@ function initGlobe() {
         flights.forEach((flight) => {
             texts.push(flight['text'])
         })
+
+        let textLoop = "";
+        let rotate = document.getElementById("scroll-text");
+        flights.forEach((flight) => {
+            textLoop += "#" + flight.id + " " + flight.from + " => " + flight.to + " : " + flight.date + " | ";
+        })
+        rotate.innerHTML = textLoop
         const loader = new FontLoader();
         loader.load('./font.json', function(font) {
             texts.forEach((planeText, index) => {
@@ -274,7 +283,7 @@ function initGlobe() {
                 const geometry = new THREE.ShapeGeometry(shapes);
                 geometry.center();
                 const text = new THREE.Mesh(geometry, matLite);
-                text.position.z = -150 - index;
+                text.position.z = -300 - index;
                 text.material.opacity = 0;
                 text.material.transparent = true;
                 textObjs.push(text);
