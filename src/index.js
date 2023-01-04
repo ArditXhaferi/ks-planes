@@ -128,7 +128,10 @@ function initControls() {
  */
 function initListeners() {
     window.addEventListener("resize", onWindowResize, false);
-    document.addEventListener("mousemove", updateMousePosition);
+
+    if (window.innerWidth > 768) {
+        document.addEventListener("mousemove", updateMousePosition);
+    }
 }
 
 onWindowResize();
