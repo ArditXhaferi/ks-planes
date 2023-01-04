@@ -210,7 +210,6 @@ function initGlobe() {
 
         allFlights.forEach(flight => {
             order += 4;
-            console.log(flight)
             flights.push({
                 "text": latLongData[flight.dep_iata][2] + "\n" + latLongData[flight.arr_iata][2],
                 "type": "flight",
