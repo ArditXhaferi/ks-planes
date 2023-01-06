@@ -21,9 +21,6 @@
         }
         
         #rotate {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
             overflow: hidden;
             white-space: nowrap;
             font-family: Hubot;
@@ -33,11 +30,10 @@
             background-color: white;
             z-index: 100;
             bottom: 0;
+            line-height: 40px;
         }
         
         #scroll-text {
-            top: 100%;
-            transform: translateY(-100%);
             /* animation properties */
             -moz-transform: translateX(100%);
             -webkit-transform: translateX(100%);
@@ -53,6 +49,7 @@
             }
             #scroll-text {
                 font-size: 1.8em;
+                line-height: 60px;
             }
         }
         /* for Firefox */
