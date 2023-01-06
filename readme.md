@@ -1,14 +1,3 @@
----
-title: "Prishtina International Airport: Visualized"
-date: "2023-01-18T15:00:00.000Z"
-description: "The focuses on visualizing all plane flights that have Prishtina International Airport 'Adem Jashari' as a point of arrival or departure."
-author: "Ardit Xhaferi"
-slug: "posts/2023-01-18-prishtina-international-airport-visualized"
-image: "https://ardit.dev/06.png"
----
-import { Tweet } from "react-twitter-widgets"
-import { Link } from "gatsby"
-
 <img alt="Screenshot One" style="width: 100%;" src="./screenshot_1.png" />
 
 <br/>
@@ -41,7 +30,7 @@ Special thanks to the tutorial from [Epic Programmer](https://www.youtube.com/wa
 <br/>
 
 
-<img alt="Screenshot Two" style="width: 50%; display: inline-block;" src="./screenshot_2.png" />
+<img alt="Screenshot Two" style="width: 100%;" src="./screenshot_2.png" />
 
 <br/>
 
