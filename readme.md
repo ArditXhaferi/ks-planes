@@ -6,7 +6,7 @@ Welcome to **"Prishtina International Airport: Visualized"!** This exciting proj
 
 The focuses on visualizing all plane flights that have Prishtina International Airport "Adem Jashari" as a point of arrival or departure.
 
-Special thanks to the tutorial from [Epic Programmer](https://www.youtube.com/watch?v=ddIZlWmfFKM) for helping me learn how to use the "Three Globe" library.
+Special thanks to the tutorial from [Epic Programmer](https://www.youtube.com/watch?v=ddIZlWmfFKM) for helping me learn how to use the "Three Globe" library and please check out his repo on [here](https://github.com/janarosmonaliev/github-globe/tree/main/).
 
 <br/>
 <hr/>

@@ -140,8 +140,8 @@ function onWindowResize() {
     const { innerWidth, innerHeight } = window;
     camera.aspect = innerWidth / innerHeight;
     camera.updateProjectionMatrix();
-    windowHalfX = innerWidth / 1.5;
-    windowHalfY = innerHeight / 1.5;
+    windowHalfX = innerWidth / 2;
+    windowHalfY = innerHeight / 2;
     renderer.setSize(innerWidth, innerHeight);
 }
 
