@@ -199,7 +199,7 @@ function initGlobe() {
         let latLongData = {}
 
         refinedAirports.forEach((airport) => {
-            latLongData[airport.text] = [airport.lat, airport.lng, airport.city]
+            latLongData[airport.code] = [airport.lat, airport.lng, airport.city]
         })
 
         let flights = []
@@ -214,7 +214,7 @@ function initGlobe() {
         allFlights.forEach(flight => {
             order += 4;
             flights.push({
-                "text": latLongData[flight.dep_iata][2] + "\n" + latLongData[flight.arr_iata][2],
+                "text": latLongData[flight.dep_icao][2] + "\n" + latLongData[flight.arr_icao][2],
                 "type": "flight",
                 "order": order,
                 "from": flight.dep_iata,
@@ -222,10 +222,10 @@ function initGlobe() {
                 "flightCode": flight.cs_flight_iata,
                 "date": flight.dep_time,
                 "status": true,
-                "startLat": latLongData[flight.dep_iata][0],
-                "startLng": latLongData[flight.dep_iata][1],
-                "endLat": latLongData[flight.arr_iata][0],
-                "endLng": latLongData[flight.arr_iata][1],
+                "startLat": latLongData[flight.dep_icao][0],
+                "startLng": latLongData[flight.dep_icao][1],
+                "endLat": latLongData[flight.arr_icao][0],
+                "endLng": latLongData[flight.arr_icao][1],
                 "arcAlt": arcAlt,
                 "id": flight.flight_number
             })
@@ -247,7 +247,10 @@ function initGlobe() {
             .arcDashInitialGap((e) => e.order * 1)
             .labelColor(() => "#eee")
             .labelDotOrientation((e) => {
-                return e.text === "Istanbul" ? "top" : "right";
+                const options = ["top", "right", "left", "bottom"];
+                const randomIndex = Math.floor(Math.random() * options.length);
+                const choice = options[randomIndex];
+                return choice;
             })
             .labelDotRadius(0.3)
             .labelSize((e) => e.size)
@@ -350,7 +353,7 @@ async function getAirportDataFromCache() {
 }
 
 async function getAirportData() {
-    const apiKey = '254547cd-b3df-4d55-8676-ddb0a4dc0a63';
+    const apiKey = process.env.API_FLIGHT_KEY;
     const baseUrl = 'https://airlabs.co/api/v9';
 
     const [departure, arrival] = await Promise.all([
@@ -364,10 +367,12 @@ async function getAirportData() {
     const allCodes = [...new Set([...airportCodes, ...arrivalCodes, ...prishtinaCode])];
 
     const allFlights = [...departure.data.response, ...arrival.data.response];
+
     const airportData = await Promise.all(allCodes.map(async(airport) => {
         const response = allAirports[airport];
         const refinedAirport = {
             text: response['iata'],
+            code: response['icao'],
             size: 1.0,
             country: response['state'],
             city: response['city'],
